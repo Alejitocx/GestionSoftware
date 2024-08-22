@@ -1,0 +1,90 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
+
+/* Página de inicio de sesión */
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+
+/* Estilo para el header con la fuente específica */
+
+/* Estilo para el header con la fuente específica */
+.header {
+  text-align: center;
+  margin-bottom: 60px; /* Reducido el margen inferior */
+  margin-top: -180px; /* Margen superior negativo para moverlo hacia arriba */
+  font-size: 120px;
+}
+
+.header h1 {
+  color: #000000; /* Color del texto */
+  font-family: 'Love Ya Like A Sister'; /* Fuente del texto */
+  margin: 0;
+  filter: drop-shadow(10px 5px rgb(45, 219, 250));
+
+}
+.header h1:first-child {
+  font-size: 150px;
+  margin-top: 0px; /* Ajuste el margen superior */
+}
+
+.header h1:last-child {
+  font-size: 150px;
+  margin-top: 0px; /* Ajuste el margen superior */
+}
+
+
+
+/* Formulario de inicio de sesión */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Ajuste del gap para el espacio entre elementos */
+  width: 100%;
+  max-width: 400px;
+  margin-top: -50px; /* Ajuste para acercar el formulario al header */
+}
+
+/* Campos de entrada de texto */
+.login-form input {
+  width: 80%; /* Ajuste de anchura al 100% para que ocupe el espacio disponible */
+  padding: 15px;
+  font-size: 18px; /* Tamaño de fuente ajustado */
+  font-family: "Love Ya Like A Sister", cursive;
+  font-style: bold;
+}
+
+/* Contenedor de los botones */
+.login-form .buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 30px; /* Aumentado el espacio entre los botones */
+  padding-top: 140px; /* Ajuste del padding superior para un mejor alineamiento */
+}
+
+/* Estilo para los botones */
+.login-form button {
+  padding: 10px 0; /* Ajuste de padding vertical */
+  font-size: 16px;
+  color: #313131;
+  background-color: #555;
+  border: none;
+  border-radius: 20px; /* Bordes más redondeados */
+  cursor: pointer;
+  flex: 1;
+  font-family: "Love Ya Like A Sister", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Efecto hover para los botones */
+.login-form button:hover {
+  background-color: #ffffff;
+}
