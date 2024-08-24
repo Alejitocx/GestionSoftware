@@ -1,40 +1,36 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
-
 /* Página de inicio de sesión */
 .login-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100vh; /* Mantener la altura completa del viewport */
   position: relative;
 }
 
 /* Estilo para el header con la fuente específica */
-
-/* Estilo para el header con la fuente específica */
 .header {
-  text-align: center;
-  margin-bottom: 60px; /* Reducido el margen inferior */
-  margin-top: -180px; /* Margen superior negativo para moverlo hacia arriba */
-  font-size: 120px;
+  text-align: center; /* Reducido el margen inferior */
+  font-size: 90px; /* Ajuste el tamaño de fuente para 1366x768 */
+  margin-top: -69px;
+  font-family: 'Love Ya Like A Sister';
 }
 
 .header h1 {
   color: #000000; /* Color del texto */
-  font-family: 'Love Ya Like A Sister'; /* Fuente del texto */
+  font-family: 'Love Ya Like A Sister';
   margin: 0;
-  filter: drop-shadow(10px 5px rgb(45, 219, 250));
-
+ 
 }
+
 .header h1:first-child {
-  font-size: 150px;
+  font-size: 120px;
   margin-top: 0px; /* Ajuste el margen superior */
 }
 
 .header h1:last-child {
-  font-size: 150px;
+  font-size: 120px;
   margin-top: 0px; /* Ajuste el margen superior */
 }
 
@@ -46,15 +42,15 @@
   flex-direction: column;
   align-items: center;
   gap: 20px; /* Ajuste del gap para el espacio entre elementos */
-  width: 100%;
+  width: 90%; /* Ajustar la anchura al 90% para una mejor visualización en pantalla completa */
   max-width: 400px;
-  margin-top: -50px; /* Ajuste para acercar el formulario al header */
+  margin-top: 0px; /* Ajuste para acercar el formulario al header */
 }
 
 /* Campos de entrada de texto */
 .login-form input {
-  width: 80%; /* Ajuste de anchura al 100% para que ocupe el espacio disponible */
-  padding: 15px;
+  width: 100%; /* Ajuste de anchura al 100% para que ocupe el espacio disponible */
+  padding-top: 40px;
   font-size: 18px; /* Tamaño de fuente ajustado */
   font-family: "Love Ya Like A Sister", cursive;
   font-style: bold;
@@ -66,17 +62,47 @@
   justify-content: space-between;
   width: 100%;
   gap: 30px; /* Aumentado el espacio entre los botones */
-  padding-top: 140px; /* Ajuste del padding superior para un mejor alineamiento */
+  padding-top: 80px; /* Ajuste del padding superior para un mejor alineamiento */
+}
+
+* Formulario de inicio de sesión */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Ajuste del gap para el espacio entre elementos */
+  width: 90%; /* Ajustar la anchura al 90% para una mejor visualización en pantalla completa */
+  max-width: 400px;
+  margin-top: -50px; /* Ajuste para acercar el formulario al header */
+}
+
+/* Campos de entrada de texto */
+.login-form input {
+  width: 80%; /* Ajuste de anchura al 100% para que ocupe el espacio disponible */
+  padding: 10px;
+  font-size: 18px; /* Tamaño de fuente ajustado */
+  font-family: "Love Ya Like A Sister", cursive;
+  font-style: bold;
+}
+
+/* Contenedor de los botones */
+.login-page .buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  gap: 30px; /* Espacio entre los botones */
+  padding-top: 80px; /* Padding superior para alineamiento */
+  margin-bottom: 50px; /* Margen inferior para mover el contenedor hacia abajo */
 }
 
 /* Estilo para los botones */
-.login-form button {
-  padding: 10px 0; /* Ajuste de padding vertical */
-  font-size: 16px;
+.login-page button {
+  padding: 8px 50px; /* Reducido el padding vertical para hacer los botones más pequeños */
+  font-size: 20px; /* Tamaño de fuente más pequeño */
   color: #313131;
   background-color: #555;
   border: none;
-  border-radius: 20px; /* Bordes más redondeados */
+  border-radius: 20px; /* Bordes redondeados */
   cursor: pointer;
   flex: 1;
   font-family: "Love Ya Like A Sister", cursive;
@@ -85,6 +111,6 @@
 }
 
 /* Efecto hover para los botones */
-.login-form button:hover {
+.login-page button:hover {
   background-color: #ffffff;
 }

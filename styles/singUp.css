@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
+
+
+/* Estilo para el formulario de registro */
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Aumentado el espacio entre elementos */
+    width: 90%;
+    max-width: 400px; /* Limita la anchura para pantallas más grandes */
+    position: relative;
+    top: 50px;
+    color:black; /* Ajuste la posición según sea necesario */
+}
+
+/* Estilo para el header con la fuente específica */
+.headeSr {
+    text-align: center;
+    font-size: 90px;
+    margin-top: -69px;
+    font-family: 'Love Ya Like A Sister';
+}
+  
+.headeSr h1 {
+    color: #000000; /* Color del texto */
+    font-family: 'Love Ya Like A Sister', cursive;
+    margin: 0;
+}
+  
+.headeSr h1:first-child {
+    font-size: 120px; /* Ajuste para hacer más prominente el primer título */
+    margin-top: -180px;
+}
+  
+.headeSr h1:last-child {
+    font-size: 120px;
+    margin-top: 0px;
+}
+ /* Estilo para los elementos del sign-up-form */
+.sign-up-form input {
+    width: 80%; /* Mantén el 100% para que el input ocupe todo el ancho disponible */
+    padding: 10px;
+    font-size: 18px; /* Tamaño de fuente ajustado */
+    font-family: "Love Ya Like A Sister", cursive;
+    font-weight: bold; /* Asegura que la fuente sea negrita */
+}
+  
+/* Estilo para el botón del sign-up-form */
+.sign-up-form .buttonsUP {
+    margin-top: 0px; /* Reduce el margen superior para pegar el botón a los inputs *//* Ajuste del padding para mejorar el tamaño del botón */
+    font-size: 25px; /* Tamaño de fuente ajustado para que se vea bien en 1366x768 */
+    color: #000000;
+    font-weight: 100;
+    border-radius: 20px;
+}
+  
+/* Efecto hover para los botones */
+.sign-up-form .buttonsUP:hover {
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+/* Ajustes generales para la página */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Evita el scroll en pantallas pequeñas */
+}
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Mantén el 100% de la altura del viewport */
+    padding: 1px; /* Añade padding para asegurar que el contenido no se pegue a los bordes */
+}
+
+.displayed-component {
+    width: 100%;
+    max-width: 400px; /* Limita el ancho de los componentes mostrados */
+    margin-top: 20px; /* Añade un espacio entre el header y el contenido mostrado */
+}
