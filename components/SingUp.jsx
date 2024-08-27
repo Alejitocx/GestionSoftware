@@ -88,7 +88,7 @@ const SignUpForm = () => {
         />
         {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
         <div className="buttonsUP">
-          <button type="submit">Registrarse</button>
+          <button type="submit">Check In</button>
         </div>
         {message && <p>{message}</p>} {/* Mostrar mensaje de respuesta */}
       </div>

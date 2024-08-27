@@ -11,3 +11,6 @@ export const signUp = async (payload) => {
     throw error; // Re-throw the error so it can be handled by the calling component
   }
 };
+
+
+
