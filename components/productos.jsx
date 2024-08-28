@@ -58,8 +58,8 @@ const ProductosList = () => {
                   <p>{producto.description_PRODUCT}</p>
                 </div>
                 <div className="producto-info">
+                  <p>Precio: {producto.price_PRODUCT}</p>
                   <p>Cantidad: {producto.amount_PRODUCT}</p>
-                  <p>Precio: ${Number(producto.price_PRODUCT)?.toFixed(2) || 'N/A'}</p>
                 </div>
                 <button 
                   className="delete-button"
@@ -73,6 +73,7 @@ const ProductosList = () => {
         </div>
       </div>
     );
+    
   };
     
 

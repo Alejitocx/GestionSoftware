@@ -10,7 +10,7 @@
   width: 100%;             /* Asegura que el encabezado ocupe todo el ancho de la página */
   text-align: center;      /* Centra el texto dentro del encabezado */
   font-size: 90px;
-  margin-top: 0;
+  margin-top: 30px;
   font-family: 'Love Ya Like A Sister';
   z-index: 1000;           /* Coloca el encabezado por encima de otros elementos */
   padding: 10px 0;         /* Agrega espacio interno (padding) al encabezado */
@@ -37,63 +37,57 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 20px;
+  padding: 80px;
   justify-content: center;
   margin-top: 300px;
+  max-height: 400px; /* Altura máxima para que quepan dos tarjetas completas */
+  overflow-y: auto; /* Habilita el scroll vertical */
+  padding-right: 10px;
 }
-.producto-cardAll{
-  background-color: #a8f5ff; /* Adjust to match the background color in your design */
-  border-radius: 400px; /* Rounded corners */
+.producto-cardAll {
+  background-color: #53daec;
+  border-radius: 80px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 40px;
-  max-width: 700px; /* Set a maximum width */
-  min-width: 350px; 
-  position: relative;
+  background-color: #3eebeb;
+  padding: 30px;
+  margin-bottom: 20px;
+  max-width: 600px;
+  min-width: 500px;
+  margin-bottom: 20px; /* Espacio entre tarjetas */
+  font-family: 'Love Ya Like A Sister';
 }
 
-.producto-card {/* Set a minimum width to maintain consistent size */
+.producto-card {
   display: flex;
+  justify-content: space-between; /* Mantiene los elementos juntos */
   align-items: center;
-  justify-content: space-between; /* Align items on the left and right */
-  text-align: left; /* Ensure text alignment follows the layout */
-  font-family: 'Love Ya Like A Sister', cursive; /* Ensure the font matches */
-  
-}
-
-.producto-info {
-  /* Estilos adicionales para la información del producto */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  width: 100%;
 }
 
 .producto-nombre-descripcion {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-grow: 2; /* Toma la mayor parte del espacio disponible */
+}
+
+.producto-info {
+  flex-grow: 1; /* Toma el resto del espacio disponible */
+  text-align: right; /* Alinea el contenido a la derecha */
 }
 
 .producto-nombre-descripcion h2 {
   margin-bottom: 10px;
-}
-
-
-.producto-card h2 {
-  font-size:15px;
-  margin: 0;
+  font-size: 20px;
 }
 
 .producto-card p {
   margin: 5px 0;
+  color: #000000;
 }
 
-.producto-card .delete-button {
+.delete-button {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  position: absolute;
-  left: 390px;
-  top: 30px;
-  font-size: 10px;
+  margin-left: 20px;
+  font-size: 20px;
+  align-self: flex-start; /* Alinea el botón con la parte superior */
 }
-
