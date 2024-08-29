@@ -53,7 +53,7 @@ const SignUpForm = () => {
         setMessage('Registro Exitoso');
       } catch (error) {
         if (error.response && error.response.data) {
-          setMessage("El código ya está registrado en la base de datos");
+          setMessage(error.response.data);
         } else {
           setMessage('Registro fallido. Por favor, inténtelo de nuevo.');
         }
