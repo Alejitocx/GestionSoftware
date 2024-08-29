@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import '../styles/login.css'; 
-import SingUpForm  from './SingUp.jsx';
+import '../styles/singUp.css'; 
+import { useNavigate } from 'react-router-dom';
+import SignUpForm from './SingUp.jsx'; // Asegúrate de importar el componente SignUpForm
+import ProductosList from './productos.jsx'; // Asegúrate de importar el componente ProductosList
 import { findUserByEmailAndPassword }  from '../services/singinservice.jsx';
 
 
@@ -14,16 +17,16 @@ const Header = () => {
   );
 }; 
 
-const LoginForm = ({ email, setEmail, password, setPassword, errorMessage, onSubmit }) => {
+const LoginForm = ({ email_user, setEmail, password_user, setPassword, errorMessage, onSubmit }) => {
   const [localError, setLocalError] = useState('');
 
   const validateInput = () => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
+    if (!emailPattern.test(email_user)) {
       setLocalError('Invalid email format');
       return false;
     }
-    if (password.length < 8) {
+    if (password_user.length < 8) {
       setLocalError('Password must be at least 8 characters long');
       return false;
     }
@@ -34,7 +37,7 @@ const LoginForm = ({ email, setEmail, password, setPassword, errorMessage, onSub
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateInput()) {
-      onSubmit(); // Call the submit handler passed from the parent component
+      onSubmit(); // Llama al manejador de envío pasado desde el componente padre
     }
   };
 
@@ -45,14 +48,14 @@ const LoginForm = ({ email, setEmail, password, setPassword, errorMessage, onSub
         <input 
           type="email" 
           placeholder="Email" 
-          value={email} 
+          value={email_user} 
           onChange={(e) => setEmail(e.target.value)} 
           required
         />
         <input 
           type="password" 
           placeholder="Password" 
-          value={password} 
+          value={password_user} 
           onChange={(e) => setPassword(e.target.value)} 
           required
         />
@@ -62,21 +65,21 @@ const LoginForm = ({ email, setEmail, password, setPassword, errorMessage, onSub
     </div>
   );
 };
-const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const LoginPage = ({ onLogin }) => {
+  const [email_user, setEmail] = useState('');
+  const [password_user, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [activeComponent, setActiveComponent] = useState('login'); // 'login' or 'signup'
+  const navigate = useNavigate();
 
   const handleSignInClick = async () => {
-    // Perform validation and submission here
     if (validateInput()) {
       try {
-        const user = await findUserByEmailAndPassword(email, password);
+        const user = await findUserByEmailAndPassword(email_user, password_user);
         if (user) {
           alert('Sign in successful');
           setErrorMessage('');
-          setActiveComponent(''); // Optionally change component
+          onLogin(); // Actualiza el estado de autenticación en el componente principal
+          navigate('/ProductosList');
         } else {
           setErrorMessage('Invalid email or password');
         }
@@ -86,13 +89,17 @@ const LoginPage = () => {
     }
   };
 
+  const handleSignUpClick = () => {
+    navigate('/SignUpForm');
+  };
+
   const validateInput = () => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
+    if (!emailPattern.test(email_user)) {
       setErrorMessage('Invalid email format');
       return false;
     }
-    if (password.length < 8) {
+    if (password_user.length < 8) {
       setErrorMessage('Password must be at least 8 characters long');
       return false;
     }
@@ -100,39 +107,27 @@ const LoginPage = () => {
     return true;
   };
 
-  const handleSignUpClick = () => {
-    setActiveComponent('signup');
-  };
-
   return (
     <div className="login-page">
-      <div className="displayed-component">
-        {activeComponent === 'login' && (
-          <LoginForm
-            email={email}
-            setEmail={setEmail}
-            password={password}
-            setPassword={setPassword}
-            errorMessage={errorMessage}
-            onSubmit={handleSignInClick} // Pass the submit handler
-          />
-        )}
-        {activeComponent === 'signup' && <SingUpForm />}
+      <LoginForm
+        email_user={email_user}
+        setEmail={setEmail}
+        password_user={password_user}
+        setPassword={setPassword}
+        errorMessage={errorMessage}
+        onSubmit={handleSignInClick}
+      />
+      <div className="buttonst">
+        <button type="button" onClick={handleSignInClick}>
+          SIGN IN
+        </button>
+        <button type="button" onClick={handleSignUpClick}>
+          SIGN UP
+        </button>
       </div>
-      
-      {/* Conditionally show/hide buttons */}
-      {activeComponent !== 'signup' && (
-        <div className="buttons">
-          <button type="button" onClick={handleSignInClick}>
-            SIGN IN
-          </button>
-          <button type="button" onClick={handleSignUpClick}>
-            SIGN UP
-          </button>
-        </div>
-      )}
     </div>
   );
 };
+
 
 export default LoginPage;

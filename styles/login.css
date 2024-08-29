@@ -95,7 +95,20 @@
   margin-bottom: 50px; /* Margen inferior para mover el contenedor hacia abajo */
 }
 
-/* Estilo para los botones */
+.buttonst {
+  display: block; /* O cualquier otro tipo de display según tu necesidad */
+  margin-top: 50px; /* Espacio superior del contenedor */
+}
+
+.buttonst button {
+  margin-right: 30px; /* Espacio a la derecha de cada botón */
+}
+
+/* Elimina el margen derecho del último botón */
+.buttonst button:last-child {
+  margin-right: 0;
+}
+
 .login-page button {
   padding: 8px 50px; /* Reducido el padding vertical para hacer los botones más pequeños */
   font-size: 20px; /* Tamaño de fuente más pequeño */

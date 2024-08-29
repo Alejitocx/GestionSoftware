@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import '../styles/SingUp.css'; 
+import React, { useEffect, useState } from 'react';
+import '../styles/singUp.css'; 
 import { signUp } from '../services/singupservice.jsx';
 
 // Componente Header
@@ -12,9 +12,9 @@ const Header = () => {
   );
 };
 const SignUpForm = () => {
-  const [email, setEmail] = useState('');
-  const [codeEmploye, setCodeEmploye] = useState('');
-  const [password, setPassword] = useState('');
+  const [email_user, setEmail] = useState('');
+  const [employe_code, setCodeEmploye] = useState('');
+  const [password_user, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [errors, setErrors] = useState({});
 
@@ -23,16 +23,16 @@ const SignUpForm = () => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-    if (!emailRegex.test(email)) {
-      errors.email = 'Ingrese un correo electrónico válido';
+    if (!emailRegex.test(email_user)) {
+      errors.email_user = 'Ingrese un correo electrónico válido';
     }
 
-    if (codeEmploye.length < 1) {
-      errors.codeEmploye = 'Ingrese un código de empleado válido';
+    if (employe_code.trim() === '') {
+      errors.employe_code = 'Ingrese un código de empleado válido';
     }
 
-    if (!passwordRegex.test(password)) {
-      errors.password = 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial';
+    if (!passwordRegex.test(password_user)) {
+      errors.password_user = 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial';
     }
 
     return errors;
@@ -46,18 +46,17 @@ const SignUpForm = () => {
     if (Object.keys(errors).length > 0) {
       setErrors(errors);
     } else {
-      const payload = {
-        email,
-        codeEmploye,
-        password,
-      };
-
       try {
-        const response = await signUp(payload);
-        setMessage(response); // Asumiendo que el backend devuelve un mensaje de éxito
+        // Ensure the order of parameters matches what the backend expects
+        const response = await signUp(employe_code, email_user, password_user);
         setErrors({});
+        setMessage('Registro Exitoso');
       } catch (error) {
-        setMessage('Registro fallido. Por favor, inténtelo de nuevo.');
+        if (error.response && error.response.data) {
+          setMessage("El código ya está registrado en la base de datos");
+        } else {
+          setMessage('Registro fallido. Por favor, inténtelo de nuevo.');
+        }
       }
     }
   };
@@ -69,28 +68,32 @@ const SignUpForm = () => {
         <input
           type="email"
           placeholder="Correo electrónico"
-          value={email}
+          value={email_user}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
+        {errors.email_user && <p style={{ color: 'red' }}>{errors.email_user}</p>}
+        
         <input
-          type="number"
+          type="text"
           placeholder="Código de empleado"
-          value={codeEmploye}
+          value={employe_code}
           onChange={(e) => setCodeEmploye(e.target.value)}
         />
-        {errors.codeEmploye && <p style={{ color: 'red' }}>{errors.codeEmploye}</p>}
+        {errors.employe_code && <p style={{ color: 'red' }}>{errors.employe_code}</p>}
+        
         <input
           type="password"
           placeholder="Contraseña"
-          value={password}
+          value={password_user}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
+        {errors.password_user && <p style={{ color: 'red' }}>{errors.password_user}</p>}
+        
         <div className="buttonsUP">
           <button type="submit">Check In</button>
         </div>
-        {message && <p>{message}</p>} {/* Mostrar mensaje de respuesta */}
+        
+        {message && <p>{message}</p>}
       </div>
     </form>
   );

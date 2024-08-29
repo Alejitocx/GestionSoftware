@@ -1,10 +1,15 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/signup';
 
-export const signUp = async (payload) => {
+export const signUp = async (codeEmploye, email_user, password_user) => {
   try {
-    const response = await axios.post(API_URL, payload);
+    const response = await axios.post("http://localhost:8090/api/users/register", null, {
+      params: {
+        employe_code: codeEmploye,
+        email_user: email_user,
+        password_user: password_user
+      },
+    });
     return response.data;
   } catch (error) {
     console.error('Error signing up:', error);
